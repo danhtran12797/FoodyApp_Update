@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_refesh_activity_main"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="Tải lại" />
+    <item
+        android:id="@+id/menu_search_activity_main"
+        android:icon="@drawable/ic_search_black"
+        android:title="search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_shoping_activity_main"
+        android:icon="@drawable/ic_shopping_cart_white"
+        android:title="shoping cart"
+        app:actionLayout="@layout/custom_action_item_layout"
+        app:showAsAction="always" />
+</menu>

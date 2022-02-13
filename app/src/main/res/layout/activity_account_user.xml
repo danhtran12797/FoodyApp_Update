@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_account_user"
+    tools:context=".activity.AccountUserActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_accounr_user"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Tài khoản của tôi"></androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_accounr_user"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAvatarAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/user_default1"
+                    app:civ_border_color="@android:color/darker_gray"
+                    app:civ_border_width="1dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgCameraAccount"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="bottom|right"
+                    android:src="@drawable/ic_edit_account_user"
+                    app:civ_border_color="#FF9800"
+                    app:civ_border_overlay="true"
+                    app:civ_border_width="1dp"
+                    app:civ_circle_background_color="@color/colorPrimaryDark" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/edtNameAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_edittext_login"
+                    android:drawableLeft="@drawable/ic_perm_identity"
+                    android:drawablePadding="10dp"
+                    android:hint="Tên"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:textColor="#000" />
+
+                <EditText
+                    android:id="@+id/edtUserNameAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/background_edittext_login"
+                    android:drawableLeft="@drawable/ic_person_login"
+                    android:drawablePadding="10dp"
+                    android:enabled="false"
+                    android:hint="Tên đăng nhập"
+                    android:inputType="text"
+                    android:padding="7dp"
+                    android:textColor="#000" />
+
+                <RelativeLayout
+                    android:background="#ddd"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtEmailAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_toLeftOf="@+id/verified_email"
+                        android:background="@drawable/background_edittext_login"
+                        android:drawableLeft="@drawable/ic_email"
+                        android:drawablePadding="10dp"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:padding="5dp"
+                        android:textColor="#000" />
+
+                    <TextView
+                        android:id="@+id/verified_email"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:text="@string/verified_email"
+                        android:textSize="14sp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/edtAddressAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/background_edittext_login"
+                    android:drawableLeft="@drawable/ic_location_on"
+                    android:drawablePadding="10dp"
+                    android:hint="Địa chỉ"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:textColor="#000000" />
+
+                <EditText
+                    android:id="@+id/edtPhoneAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/background_edittext_login"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:drawablePadding="10dp"
+                    android:hint="Số điện thoại"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="5dp"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_save_change_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:padding="12dp"
+            android:text="Lưu thay đổi"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <include layout="@layout/state_layout"/>
+
+</RelativeLayout>

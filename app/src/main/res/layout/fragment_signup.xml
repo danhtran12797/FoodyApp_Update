@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgDefaultAvatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/user_default1"
+            app:civ_border_color="@android:color/darker_gray"
+            app:civ_border_width="1dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgCamera"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_photo_camera"
+            app:civ_border_color="#FF9800"
+            app:civ_border_width="1dp"
+            app:civ_circle_background_color="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/imgDefaultAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/imgDefaultAvatar" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/imgDefaultAvatar">
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:drawableLeft="@drawable/ic_perm_identity"
+                android:drawablePadding="10dp"
+                android:hint="Tên *"
+                android:inputType="textPersonName"
+                android:maxLength="30"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_"
+                android:drawableLeft="@drawable/ic_person_login"
+                android:drawablePadding="10dp"
+                android:hint="Tên đăng nhập *"
+                android:inputType="textFilter"
+                android:singleLine="true"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtPassSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:drawableLeft="@drawable/ic_lock_black"
+                android:drawablePadding="10dp"
+                android:hint="Mật khẩu *"
+                android:inputType="textPassword"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtConfirmPassSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:drawableLeft="@drawable/ic_vpn_key"
+                android:drawablePadding="10dp"
+                android:hint="Xác nhận mật khẩu *"
+                android:inputType="textPassword"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtEmailRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_"
+                android:drawableLeft="@drawable/ic_location_on"
+                android:drawablePadding="10dp"
+                android:hint="Địa chỉ"
+                android:inputType="text"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:hint="Số điện thoại"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_button_login"
+                android:padding="10dp"
+                android:text="Đăng ký"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

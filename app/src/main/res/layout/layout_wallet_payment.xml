@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/radioWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:showDividers="middle">
+
+        <RadioButton
+            android:id="@+id/radio_momo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@drawable/drawable_radio_momo"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+            android:tag="3"
+            android:text="Ví MoMo" />
+
+        <RadioButton
+            android:id="@+id/radio_zalo"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@drawable/drawable_radio_zalo"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+            android:tag="4"
+            android:text="Ví Zalo Pay" />
+
+    </RadioGroup>
+
+</RelativeLayout>

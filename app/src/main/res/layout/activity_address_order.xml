@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_address_order"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Địa chỉ nhận hàng">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/layout_container_convert_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_address_order"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp">
+
+            <FrameLayout
+                android:id="@+id/layout_address_process_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/corner_process_order_active"
+                android:padding="5dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_address_process_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_location_on_48dp"
+                    app:civ_circle_background_color="@color/colorPrimaryDark" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/layout_pay_process_order"
+                android:layout_toRightOf="@+id/layout_address_process_order"
+                android:maxLines="1"
+                android:text="-------------------------" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/layout_confirm_process_order"
+                android:layout_toRightOf="@+id/layout_pay_process_order"
+                android:maxLines="1"
+                android:text="-------------------------" />
+
+            <FrameLayout
+                android:id="@+id/layout_confirm_process_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/corner_process_order"
+                android:padding="5dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_confirm_process_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_check_black_48dp"
+                    app:civ_circle_background_color="@android:color/darker_gray" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_pay_process_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/corner_process_order"
+                android:padding="5dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_pay_process_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_payment_black_48dp"
+                    app:civ_circle_background_color="@android:color/darker_gray" />
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Thanh toán" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Xác nhận" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/cardview_address_order"
+        android:layout_below="@+id/layout_container_convert_fragment"
+        android:background="@color/background">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_select_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"></androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/txt_add_new_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/recycler_view_select_address"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="Thêm địa chỉ mới"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="19sp" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_address_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_shipping_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:background="@drawable/selector_button"
+            android:elevation="5dp"
+            android:text="Giao đến địa chỉ này"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

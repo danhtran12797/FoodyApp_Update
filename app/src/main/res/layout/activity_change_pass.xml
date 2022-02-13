@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChangePassActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_change_pass"
+        android:elevation="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Đổi mật khẩu"
+        android:background="@color/colorAccent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:id="@+id/layout_change_pass"
+        android:layout_below="@+id/toolbar_change_pass"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="14dp">
+        <TextView
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:text="Xin vui lòng nhập mật khẩu mới của bạn tại đây."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passInputLayout"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            android:hint="Mật khẩu"
+            android:textColorHint="@color/text_color"
+            app:passwordToggleTint="@color/colorAccent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPass"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPassInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            android:hint="Xác mật khẩu"
+            android:textColorHint="@color/text_color"
+            app:passwordToggleTint="@color/colorAccent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtConfirmPass"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnConfirmChangePass"
+            android:layout_marginTop="12dp"
+            android:text="Đổi mật khẩu"
+            android:textColor="@android:color/darker_gray"
+            android:background="@drawable/custom_btn_validate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <include layout="@layout/state_layout"/>
+
+</RelativeLayout>

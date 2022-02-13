@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_order"
+    tools:context=".activity.OrderActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_order"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Quản lý đơn hàng"></androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_order"
+        tools:listitem="@layout/item_order"></androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/layout_no_product_love"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/empty_cart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có đơn hàng"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btn_buy_now"
+            android:layout_marginTop="15dp"
+            android:text="Mua ngay!"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/selector_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <include layout="@layout/state_layout"/>
+</RelativeLayout>

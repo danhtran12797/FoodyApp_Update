@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="@drawable/nav_header_bg"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <LinearLayout
+        android:id="@+id/layout_header_login_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_login_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_button_login"
+            android:padding="10dp"
+            android:text="Đăng nhập"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_register_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_button_login"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="Đăng ký"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_infor_user_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar_user_header"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_name_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coding in Flow"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_email_header"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info@codinginflow.com"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_set_email_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_email"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_notifi_email_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notifi_verified_email"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

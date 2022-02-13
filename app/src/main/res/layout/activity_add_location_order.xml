@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".activity.AddLocationOrderActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_location"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Thêm địa chỉ mới"></androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_add_location"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:hint="Họ tên"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_name_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:hint="Số điện thoại"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_phone_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:inputType="phone"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_provin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:hint="Tỉnh/Thành"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_provin_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:drawableRight="@drawable/ic_arrow_drop_down"
+                    android:focusableInTouchMode="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom|center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_distric"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:hint="Quận/Huyện"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_distric_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:drawableRight="@drawable/ic_arrow_drop_down"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_ward"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:hint="Phường/Xã"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_ward_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:drawableRight="@drawable/ic_arrow_drop_down"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:hint="Địa chỉ"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/edt_address_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/checkbox_default_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:paddingLeft="10dp"
+                    android:text="Đặt làm địa chỉ mặt định" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_add_new_loca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/selector_button"
+                    android:elevation="5dp"
+                    android:text="Thêm địa chỉ mới"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

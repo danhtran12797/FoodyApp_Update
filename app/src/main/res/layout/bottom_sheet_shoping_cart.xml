@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/img_close_bottom_sheet"
+            android:drawableLeft="@drawable/ic_check_circle"
+            android:drawablePadding="10dp"
+            android:text="Thực đơn đã được thêm vào giỏ hàng"
+            android:textColor="#408F43" />
+
+        <ImageView
+            android:id="@+id/img_close_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_close_black" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_img_bottom_sheet"
+            android:layout_width="110dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="5dp">
+
+            <ImageView
+                android:id="@+id/img_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_background_image_product"
+                android:scaleType="centerCrop"
+                android:src="@drawable/my_y" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/cardview_img_bottom_sheet"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_name_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Bánh tráng trộn"
+                android:textColor="#FF5722"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_category_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Đồ uống"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_price_bottom_sheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="20.202.000 VNĐ"
+                android:textColor="@android:color/black"
+                android:textSize="26sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/btn_seen_shoping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_button"
+        android:elevation="5dp"
+        android:padding="5dp"
+        android:text="Xem Giỏ Hàng"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

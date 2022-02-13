@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_search_main"
+    tools:context=".activity.SearchActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cart_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_search_view"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/imgVoice">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/custom_search_view"
+                            android:hint="Nhập tên thực đơn"
+                            android:inputType="text"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="44dp"
+                            android:singleLine="true"
+                            android:textSize="13sp" />
+
+                        <ImageView
+                            android:id="@+id/imgClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_close_search"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgVoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_voice"
+                        app:civ_circle_background_color="@color/dart1" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cart_search"
+            android:orientation="vertical">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        app:layout_scrollFlags="scroll|enterAlways">
+
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imageSwitch"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/grid_view" />
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_empty_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/ic_restaurant_menu" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Rất tiết, không tìm thấy thực đơn phù hợp với lựa chọn của bạn"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/selector_button"
+                    android:padding="5dp"
+                    android:text="Tiếp Tục Mua Hàng"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cart_search"
+            android:background="@color/background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_treding"
+                        app:civ_circle_background_color="@android:color/holo_red_light" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:text="Từ Khóa Hot"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/flexbox_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    app:alignContent="stretch"
+                    app:alignItems="stretch"
+                    app:flexWrap="wrap">
+
+                </com.google.android.flexbox.FlexboxLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lịch sử tìm kiếm"
+                        android:textColor="@color/text_color"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/txt_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:text="XÓA"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textSize="17dp" />
+                </FrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <include layout="@layout/state_layout"/>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zing.zalo.zalosdk:openapi:2.6.0329@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b7dd3a43c00b75927f4a0293301b7149/jetified-openapi-2.6.0329/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b7dd3a43c00b75927f4a0293301b7149/jetified-openapi-2.6.0329/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b7dd3a43c00b75927f4a0293301b7149/jetified-openapi-2.6.0329/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9be4c1b66d236748c1a8a15ed25f00bc/jetified-openapi-2.6.0329/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9be4c1b66d236748c1a8a15ed25f00bc/jetified-openapi-2.6.0329/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9be4c1b66d236748c1a8a15ed25f00bc/jetified-openapi-2.6.0329/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ff9b5205fbb905c46542a68c9ad305e/jetified-openapi-2.6.0329/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ff9b5205fbb905c46542a68c9ad305e/jetified-openapi-2.6.0329/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ff9b5205fbb905c46542a68c9ad305e/jetified-openapi-2.6.0329/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c2403be4dfd989134e5584f426c56429/jetified-openapi-2.6.0329/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c2403be4dfd989134e5584f426c56429/jetified-openapi-2.6.0329/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c2403be4dfd989134e5584f426c56429/jetified-openapi-2.6.0329/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61219ffbd2d205ec908d544491d22cbf/jetified-openapi-2.6.0329/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61219ffbd2d205ec908d544491d22cbf/jetified-openapi-2.6.0329/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61219ffbd2d205ec908d544491d22cbf/jetified-openapi-2.6.0329/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zing.zalo.zalosdk/openapi/2.6.0329/e59354c35cfd202f46fe56ab3cedce812d5061a/openapi-2.6.0329-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

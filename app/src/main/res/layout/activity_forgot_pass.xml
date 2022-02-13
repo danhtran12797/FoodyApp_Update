@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ForgotPassActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_forgot_pass"
+        android:elevation="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Quên mật khẩu"
+        android:background="@color/colorAccent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <LinearLayout
+        android:id="@+id/layout_forgot_pass"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar_forgot_pass"
+        android:padding="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmail"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnConfirmEmail"
+            android:layout_marginTop="12dp"
+            android:text="Lấy lại mật khẩu"
+            android:textColor="@color/darker_gray"
+            android:background="@drawable/custom_btn_validate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:text="Vui lòng cung cấp địa chỉ email để lấy lại mật khẩu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/state_layout"/>
+
+</RelativeLayout>

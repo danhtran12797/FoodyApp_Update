@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:zpdk-sandboxMerchant-release:unspecified">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/zpdk-sandboxMerchant-release/build/.transforms/755faab687972d38a6aa470e72bba1c3/jetified-zpdk-sandboxMerchant-release/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/zpdk-sandboxMerchant-release/build/.transforms/755faab687972d38a6aa470e72bba1c3/jetified-zpdk-sandboxMerchant-release/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/zpdk-sandboxMerchant-release/build/.transforms/755faab687972d38a6aa470e72bba1c3/jetified-zpdk-sandboxMerchant-release/res" />
+      <root url="file://$PROJECT_DIR$/zpdk-sandboxMerchant-release/build/.transforms/755faab687972d38a6aa470e72bba1c3/jetified-zpdk-sandboxMerchant-release/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

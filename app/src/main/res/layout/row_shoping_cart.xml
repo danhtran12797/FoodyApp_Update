@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?attr/selectableItemBackground">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_item_shoping_cart"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        app:cardCornerRadius="5dp">
+
+        <ImageView
+            android:id="@+id/img_shoping_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_background_image_product"
+            android:scaleType="centerCrop"
+            android:src="@drawable/my_y" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/cardview_item_shoping_cart"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txt_name_shoping_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/img_close_shoping_cart"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Bánh tráng trộn"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/img_close_shoping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_close_black" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_category_shoping_cart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Thuộc danh mục đồ uống" />
+
+        <TextView
+            android:id="@+id/txt_price_shoping_cart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="20,000,000 VNĐ"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardview_item_shoping_cart"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/cardview_item_shoping_cart">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_minus_shoping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ddd"
+                android:padding="5dp"
+                android:src="@drawable/ic_remove" />
+
+            <TextView
+                android:id="@+id/txt_quantity_shoping_cart"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="10"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/img_plus_shoping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ddd"
+                android:padding="5dp"
+                android:src="@drawable/ic_add" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_seen_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Mua sau"
+            android:textColor="@android:color/holo_blue_light" />
+    </RelativeLayout>
+</RelativeLayout>
