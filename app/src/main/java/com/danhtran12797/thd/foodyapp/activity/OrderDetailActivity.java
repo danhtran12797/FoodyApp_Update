@@ -163,8 +163,10 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
             txt_payment.setText("Thanh toán bằng thẻ quốc tế Visa, Master, JCB");
         } else if (payment.equals("3")) {
             txt_payment.setText("Thanh toán bằng ví MoMo");
-        } else {
+        } else if (payment.equals("4")) {
             txt_payment.setText("Thanh toán bằng ví ZaloPay");
+        } else {
+            txt_payment.setText("Thanh toán bằng ví VNPAY");
         }
     }
 

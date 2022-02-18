@@ -92,6 +92,7 @@
                     android:id="@+id/edt_provin_loca"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="Ho Chi Minh"
                     android:textColor="@color/text_color"
                     android:drawableRight="@drawable/ic_arrow_drop_down"
                     android:focusableInTouchMode="false" />
@@ -120,6 +121,7 @@
                     android:id="@+id/edt_distric_loca"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="quan 7"
                     android:textColor="@color/text_color"
                     android:drawableRight="@drawable/ic_arrow_drop_down"
                     android:focusableInTouchMode="false"
@@ -140,6 +142,7 @@
 
                 <EditText
                     android:id="@+id/edt_ward_loca"
+                    android:text="Binh Thuan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/text_color"

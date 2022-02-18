@@ -1,5 +1,10 @@
 package com.danhtran12797.thd.foodyapp.activity;
 
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.arrHistory;
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.getHistorySearchPreference;
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.removeHistorySearchPreference;
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.setHistorySearchPreference;
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,11 +56,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.arrHistory;
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.getHistorySearchPreference;
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.removeHistorySearchPreference;
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.setHistorySearchPreference;
 
 public class SearchActivity extends AppCompatActivity implements ISearch, IHistory, ILoading {
 
@@ -238,32 +238,6 @@ public class SearchActivity extends AppCompatActivity implements ISearch, IHisto
         });
     }
 
-//    private void evenSearchView() {
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                getData(query);
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-//
-//        ImageView closeButton = (ImageView) searchView.findViewById(R.id.search_close_btn);
-//        closeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View viewBottomSheet) {
-//                searchView.setQuery("", false);
-//                searchView.requestFocus();
-//                arrProduct.clear();
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
-
     private void setAdapter(ArrayList<Product> arrayList) {
         if (type_search == 1) {
             adapter = new LoveProductAdapter(SearchActivity.this, arrProduct);
@@ -287,7 +261,6 @@ public class SearchActivity extends AppCompatActivity implements ISearch, IHisto
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
 //                txtSearch.dismissDropDown();
                 layout_search.setVisibility(View.GONE);
-//                rotateLoading.stop();
                 mListener.stop_loading(true);
                 arrProduct.clear();
                 arrProduct = (ArrayList<Product>) response.body();
@@ -302,7 +275,6 @@ public class SearchActivity extends AppCompatActivity implements ISearch, IHisto
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-//                rotateLoading.stop();
                 mListener.stop_loading(false);
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }

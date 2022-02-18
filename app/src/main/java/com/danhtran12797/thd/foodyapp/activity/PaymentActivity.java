@@ -1,11 +1,15 @@
 package com.danhtran12797.thd.foodyapp.activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.danhtran12797.thd.foodyapp.R;
 import com.danhtran12797.thd.foodyapp.model.Order;
@@ -68,10 +73,11 @@ public class PaymentActivity extends AppCompatActivity {
                     radioGroup.check(R.id.radio_zalo);
                 }
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(PaymentActivity.this);
+                AlertDialog dialog = new AlertDialog.Builder(PaymentActivity.this).create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setView(view);
                 dialog.setCancelable(false);
-                dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE,"Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int id = radioGroup.getCheckedRadioButtonId();
@@ -80,14 +86,20 @@ public class PaymentActivity extends AppCompatActivity {
                             radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_momo, 0, 0, 0);
                             radioButton3.setText("Ví MoMo");
                             radioButton3.setTag("3");
-                        } else {
+                        } else if (radioButton1.getTag().equals("4")) {
                             radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_zalo, 0, 0, 0);
                             radioButton3.setText("Ví ZaloPay");
                             radioButton3.setTag("4");
+                        } else {
+                            radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_vnpay, 0, 0, 0);
+                            radioButton3.setText("Ví VNPAY");
+                            radioButton3.setTag("5");
                         }
                     }
                 });
                 dialog.show();
+                Button yesButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                yesButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_button_yes_pay));
             }
         });
     }
@@ -103,10 +115,15 @@ public class PaymentActivity extends AppCompatActivity {
                 radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_momo, 0, 0, 0);
                 radioButton3.setText("Ví MoMo");
                 radioButton3.setTag("3");
-            } else {
+            } else if (payment.equals("4")) {
                 radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_zalo, 0, 0, 0);
                 radioButton3.setText("Ví ZaloPay");
                 radioButton3.setTag("4");
+            }
+            else {
+                radioButton3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.drawable_radio_vnpay, 0, 0, 0);
+                radioButton3.setText("Ví VNPAY");
+                radioButton3.setTag("5");
             }
         }
     }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: :merchant-1.0.25:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2fb1fc309410a027b09f9f886861d0c/jetified-merchant-1.0.25/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2fb1fc309410a027b09f9f886861d0c/jetified-merchant-1.0.25/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d2fb1fc309410a027b09f9f886861d0c/jetified-merchant-1.0.25/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

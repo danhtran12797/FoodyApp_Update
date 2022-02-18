@@ -23,8 +23,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3eef701306f9a81b0fd0cf31435e70ea/jetified-browser-switch-0.1.7/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3eef701306f9a81b0fd0cf31435e70ea/jetified-browser-switch-0.1.7/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7c2a60b2a0d593d6421d120fafde20/jetified-browser-switch-0.1.7/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7c2a60b2a0d593d6421d120fafde20/jetified-browser-switch-0.1.7/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7c2a60b2a0d593d6421d120fafde20/jetified-browser-switch-0.1.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a55fb012c9edcbf5f6526e534beb9793/jetified-browser-switch-0.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/41dc010594dd24a4c351ce546e760b7b/jetified-browser-switch-0.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3bf23d86b3c0f7fc9501594482b34bf9/jetified-browser-switch-0.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/33c04560af4bb11207997ff208917990/jetified-browser-switch-0.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16b22fc7187c5cb248bd969cab7d714d/jetified-browser-switch-0.1.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16b22fc7187c5cb248bd969cab7d714d/jetified-browser-switch-0.1.7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16b22fc7187c5cb248bd969cab7d714d/jetified-browser-switch-0.1.7/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.braintreepayments/browser-switch/0.1.7/789de4c4450a4613a59a2b4fa8aa241df2df2902/browser-switch-0.1.7-javadoc.jar!/" />

@@ -1,5 +1,6 @@
 package com.danhtran12797.thd.foodyapp.module.login;
 
+import com.danhtran12797.thd.foodyapp.activity.listener.ILoading;
 import com.danhtran12797.thd.foodyapp.model.JWTToken;
 import com.danhtran12797.thd.foodyapp.service.APIService;
 
@@ -10,12 +11,15 @@ import retrofit2.HttpException;
 public class LoginManage {
 
     ILogin loginListener;
+    ILoading loadingListener;
 
-    public LoginManage(ILogin loginListener) {
+    public LoginManage(ILogin loginListener, ILoading loadingListener) {
         this.loginListener = loginListener;
+        this.loadingListener = loadingListener;
     }
 
     public void loginWithUserName(String username, String pass) {
+        loadingListener.start_loading();
         APIService.getService().LoginJWT(username, pass)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -28,6 +32,7 @@ public class LoginManage {
     }
 
     public void loginWithSocial(String idUser, String name, String url) {
+        loadingListener.start_loading();
         APIService.getService().LoginSocial(idUser)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -37,7 +42,8 @@ public class LoginManage {
                 }, throwable -> {
                     if (((HttpException) throwable).code() == 404) {
                         loginListener.register(idUser, name, url);
-                    }
+                    }else
+                        loadingListener.stop_loading(false);
                 });
     }
 

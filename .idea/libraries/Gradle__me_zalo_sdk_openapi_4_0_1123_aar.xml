@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: me.zalo:sdk-openapi:4.0.1123@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6b44105979fe7ce901963a34d40b5f0/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55d61b1d0d0e3837c597d1599ffad12f/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f376d43d256f52b60e5ad952700db590/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a585991143980f71c4c3ddd8efcbffb2/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f90517f2669be60154ff8fe1090f3241/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/42c77aaea0eec2ef1399c6f0edb21e4e/jetified-sdk-openapi-4.0.1123/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/42c77aaea0eec2ef1399c6f0edb21e4e/jetified-sdk-openapi-4.0.1123/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/42c77aaea0eec2ef1399c6f0edb21e4e/jetified-sdk-openapi-4.0.1123/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.zalo/sdk-openapi/4.0.1123/56b6a6669145cd60a50493790f1fa732265b2e6e/sdk-openapi-4.0.1123-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

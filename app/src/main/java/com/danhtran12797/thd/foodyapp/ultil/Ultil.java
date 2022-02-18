@@ -47,7 +47,7 @@ public class Ultil {
     public static String url_image_avatar = "https://applon12797.000webhostapp.com/foody/anh/anhuser/";
     public static String url_image_notify = "https://applon12797.000webhostapp.com/foody/anh/thongbao/";
 
-//    public static String url_image_banner = "http://192.168.42.107/foody/anh/quangcao/";
+    //    public static String url_image_banner = "http://192.168.42.107/foody/anh/quangcao/";
 //    public static String url_image_product = "http://192.168.42.107/foody/anh/";
 //    public static String url_image_category = "http://192.168.42.107/foody/anh/danhmuc/";
 //    public static String url_image_avatar = "http://192.168.42.107/foody/anh/anhuser/";
@@ -58,6 +58,8 @@ public class Ultil {
     public static String ADDRESS_SHIPPING = "address shipping";
     public static String HISTORY_SEARCH = "history search";
     public static String TOKEN_USER = "token user";
+    public static String VNP_TxnRef = "vnp_TxnRef";
+    public static String VNP_CreateDate = "vnp_CreateDate";
     public static ArrayList<ShopingCart> arrShoping = null;
     public static ArrayList<AddressShipping> arrAddressShipping = null;
     public static ArrayList<String> arrHistory = null;
@@ -242,6 +244,32 @@ public class Ultil {
         SharedPreferences.Editor editor = preferences.edit();
 
         editor.remove(HISTORY_SEARCH);
+        editor.apply();
+    }
+
+    public static void setVnPayPreference(Context context, String txtRef, String createDate) {
+        SharedPreferences preferences = context.getSharedPreferences(NAME_SHARED_PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(VNP_TxnRef, txtRef);
+        editor.putString(VNP_CreateDate, createDate);
+        editor.apply();
+    }
+
+    public static String[] getVnPayPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(NAME_SHARED_PREFERENCES, MODE_PRIVATE);
+        String vnp_TxnRef = preferences.getString(VNP_TxnRef, "");
+        String vnp_CreateDate = preferences.getString(VNP_CreateDate, "");
+        return new String[]{vnp_TxnRef, vnp_CreateDate};
+
+    }
+
+    public static void removeVnPayPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(NAME_SHARED_PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.remove(VNP_TxnRef);
+        editor.remove(VNP_CreateDate);
         editor.apply();
     }
 

@@ -23,8 +23,13 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8893ef62867b9fafe9bc59c5a7e903e7/jetified-facebook-core-4.42.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8893ef62867b9fafe9bc59c5a7e903e7/jetified-facebook-core-4.42.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/402740e696c4b69c54cea564a9c008db/jetified-facebook-core-4.42.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/402740e696c4b69c54cea564a9c008db/jetified-facebook-core-4.42.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/402740e696c4b69c54cea564a9c008db/jetified-facebook-core-4.42.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0142bd9eecf0d4e4521b703ea1dd4bb/jetified-facebook-core-4.42.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4fa944bdc1d2ddb087db60b8ad9fadcb/jetified-facebook-core-4.42.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c292b51fbf641d457480f607b321e6d1/jetified-facebook-core-4.42.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5977926ff235fece9c49aa3de5be34aa/jetified-facebook-core-4.42.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fb0b75d6e4b7a4d47ec292322ccb0c/jetified-facebook-core-4.42.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fb0b75d6e4b7a4d47ec292322ccb0c/jetified-facebook-core-4.42.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fb0b75d6e4b7a4d47ec292322ccb0c/jetified-facebook-core-4.42.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-core/4.42.0/cefb60deba6266d6d3e28d36c074718a86bcbd72/facebook-core-4.42.0-javadoc.jar!/" />

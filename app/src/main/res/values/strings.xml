@@ -28,8 +28,8 @@
 
     <string name="link_privacy_policy">Bằng việc đăng ký, bạn đồng ý với <a href="https://thd-foody-1.flycricket.io/privacy.html"><b color='#FF9800'>Điều khoản dịch vụ</b></a> của THD Foody</string>
 
-    <string name="facebook_app_id">2198627943763541</string>
-    <string name="fb_login_protocol_scheme">fb2198627943763541</string>
+    <string name="facebook_app_id">495821158728004</string>
+    <string name="fb_login_protocol_scheme">fb495821158728004</string>
     <string name="loginFacebookButton">Facebook</string>
 
     <string name="snack_bar_text">Bạn vừa xóa %s khỏi giỏ hàng</string>

@@ -125,57 +125,10 @@ public class LoginActivity extends AppCompatActivity implements SignupFragment.S
         }
     }
 
-    OAuthCompleteListener listenerZalo = new OAuthCompleteListener() {
-        @Override
-        public void onAuthenError(int errorCode, String message) {
-            //Đăng nhập thất bại..
-            Log.d(TAG, "onAuthenError: " + message);
-        }
-
-        @Override
-        public void onGetOAuthComplete(OauthResponse response) {
-            String code = response.getOauthCode();
-            //Đăng nhập thành công..
-            Log.d(TAG, "onGetOAuthComplete: ZALO LOGIN SUCCESS");
-            ZaloSDK.Instance.getProfile(LoginActivity.this, new ZaloOpenAPICallback() {
-                @Override
-                public void onResult(JSONObject jsonObject) {
-                    Log.d(TAG, "onResult: " + jsonObject.toString());
-                    try {
-                        String id = jsonObject.getString("id");
-                        String name = jsonObject.getString("name");
-                        String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
-                        register(id, name, url);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, new String[]{"id", "name", "picture"});
-        }
-    };
-
     @Override
     public void login() {
         Log.d(TAG, "login: ZALO");
-        ZaloSDK.Instance.authenticate(this, listenerZalo);
     }
-
-    // request code zalo: 64725
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-//        ZaloSDK.Instance.onActivityResult(this, requestCode, resultCode, data);
-//        Log.d(TAG, "requestCode: " + requestCode);
-//        Log.d(TAG, "resultCode: " + resultCode);
-//        Bundle bundle = data.getExtras();
-//
-//        if (bundle != null) {
-//            for (String key : bundle.keySet()) {
-//                Log.d(TAG, key + " : " + (bundle.get(key) != null ? bundle.get(key) : "NULL"));
-//            }
-//        }
-    }
-
 
     @Override
     public void loginSuccess(List<User> users) {

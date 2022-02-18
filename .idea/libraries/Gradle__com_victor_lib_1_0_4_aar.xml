@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.victor:lib:1.0.4@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c5dde37ffeb255115cd5d04c0305314/jetified-lib-1.0.4/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c5dde37ffeb255115cd5d04c0305314/jetified-lib-1.0.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c5dde37ffeb255115cd5d04c0305314/jetified-lib-1.0.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d402dbbc665ee435b57f6b085d12b79e/jetified-lib-1.0.4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d402dbbc665ee435b57f6b085d12b79e/jetified-lib-1.0.4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d402dbbc665ee435b57f6b085d12b79e/jetified-lib-1.0.4/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.victor/lib/1.0.4/46bd7bfe79eb0a150197c894ce1e571ea4aab833/lib-1.0.4-javadoc.jar!/" />

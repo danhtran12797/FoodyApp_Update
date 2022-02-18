@@ -78,7 +78,7 @@
                 android:drawablePadding="5dp"
                 android:paddingLeft="10dp"
                 android:tag="0"
-                android:text="Ví MoMo, Ví Zalo Pay" />
+                android:text="Ví MoMo, Ví ZaloPay, Ví VNPAY" />
 
         </RadioGroup>
 

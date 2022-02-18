@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: me.zalo:sdk-auth:4.0.1123@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/94ee6d13a3c65745d84be8b102e5d1f1/jetified-sdk-auth-4.0.1123/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/94ee6d13a3c65745d84be8b102e5d1f1/jetified-sdk-auth-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/94ee6d13a3c65745d84be8b102e5d1f1/jetified-sdk-auth-4.0.1123/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.zalo/sdk-auth/4.0.1123/d0c2e249addba30fc2e2caf6bc62176f946467be/sdk-auth-4.0.1123-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

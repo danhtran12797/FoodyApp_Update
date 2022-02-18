@@ -22,9 +22,14 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/deaf32d6e366332395a1a8f0a7b5b091/jetified-core-2.18.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/deaf32d6e366332395a1a8f0a7b5b091/jetified-core-2.18.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/deaf32d6e366332395a1a8f0a7b5b091/jetified-core-2.18.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ae8fb1bacfd810f73f60448eaf7d556/jetified-core-2.18.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ae8fb1bacfd810f73f60448eaf7d556/jetified-core-2.18.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ae8fb1bacfd810f73f60448eaf7d556/jetified-core-2.18.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bbcea6df64965bbc760bb13025859854/jetified-core-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/476dd82e99432472e57a66e3ab86d8fa/jetified-core-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66a1b8839435a27941e8c00bb05555e6/jetified-core-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7fa5481c4d5d23af0ec6d78afc553d5e/jetified-core-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec45e56a55c37f6191a73ad056118480/jetified-core-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec45e56a55c37f6191a73ad056118480/jetified-core-2.18.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec45e56a55c37f6191a73ad056118480/jetified-core-2.18.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.braintreepayments.api/core/2.18.1/b22632c920938db3687bf564e2f6d58d200cf4f6/core-2.18.1-javadoc.jar!/" />

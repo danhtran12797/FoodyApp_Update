@@ -72,7 +72,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_signup);
 
         mListener = this;
-        loginManage = new LoginManage(this);
+        loginManage = new LoginManage(this, mListener);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -197,7 +197,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-//                mListener.stop_loading(true);
+                mListener.stop_loading(true);
                 String message = response.body();
                 Log.d(TAG, "uploadImage: " + message);
                 if (message.equals(name_file)) {
@@ -245,7 +245,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-//                mListener.stop_loading(true);
+                mListener.stop_loading(true);
                 String message = response.body();
                 Log.d(TAG, "onResponse: " + message);
                 if (message.equals("success")) {

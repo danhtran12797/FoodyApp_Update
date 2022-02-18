@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: me.zalo:sdk-core:4.0.1123@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/445e01783575a45c96ca6e8a6f97ba9a/jetified-sdk-core-4.0.1123/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/445e01783575a45c96ca6e8a6f97ba9a/jetified-sdk-core-4.0.1123/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/445e01783575a45c96ca6e8a6f97ba9a/jetified-sdk-core-4.0.1123/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.zalo/sdk-core/4.0.1123/4f3ac8ab867e621e072f55c94ea6fe3c3e722147/sdk-core-4.0.1123-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

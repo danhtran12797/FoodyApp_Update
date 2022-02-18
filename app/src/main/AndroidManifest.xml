@@ -7,9 +7,15 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <queries>
+        <package android:name="com.zing.zalo" />
+    </queries>
 
     <application
         android:name=".App"
@@ -37,16 +43,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SignupActivity"
-            android:screenOrientation="portrait" /> <!-- <activity -->
-        <!-- android:name="com.zing.zalo.zalosdk.oauth.BrowserLoginActivity"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.VIEW" /> -->
-        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
-        <!-- <data android:scheme="zalo-3962832770094309314" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <!-- Required zalo app id -->
+            android:screenOrientation="portrait" />
+
+        <activity android:name="com.zing.zalo.zalosdk.oauth.BrowserLoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="zalo-3013396688480131025" />
+            </intent-filter>
+        </activity>
+
+
         <meta-data
             android:name="com.zing.zalo.zalosdk.appID"
             android:value="@string/appID" />

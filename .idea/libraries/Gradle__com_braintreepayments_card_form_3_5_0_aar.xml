@@ -8,7 +8,7 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/22de418682a258328bc4e6f66033852c/jetified-card-form-3.5.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/957e736d1988fc1dc4efaf430931e377/jetified-card-form-3.5.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6c699ce3b007ae17e9668bb237e313c8/jetified-card-form-3.5.0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3275957c4e5b0206fe55be546da54336/jetified-card-form-3.5.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/80d8f0fea2106bc47803060c8b458e1b/jetified-card-form-3.5.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b6fb3a30d716d5c93937e6c1449d7d24/jetified-card-form-3.5.0/AndroidManifest.xml" />
@@ -32,9 +32,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6c699ce3b007ae17e9668bb237e313c8/jetified-card-form-3.5.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6c699ce3b007ae17e9668bb237e313c8/jetified-card-form-3.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6c699ce3b007ae17e9668bb237e313c8/jetified-card-form-3.5.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3275957c4e5b0206fe55be546da54336/jetified-card-form-3.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3275957c4e5b0206fe55be546da54336/jetified-card-form-3.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3275957c4e5b0206fe55be546da54336/jetified-card-form-3.5.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/80d8f0fea2106bc47803060c8b458e1b/jetified-card-form-3.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/80d8f0fea2106bc47803060c8b458e1b/jetified-card-form-3.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/80d8f0fea2106bc47803060c8b458e1b/jetified-card-form-3.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.braintreepayments/card-form/3.5.0/84fcf841b48181dd311bdea66c4f2c5dfb12e536/card-form-3.5.0-javadoc.jar!/" />

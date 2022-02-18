@@ -29,10 +29,15 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7216e9d25a16c563a987a17e0f55acf0/jetified-data-collector-2.18.1/jars/libs/paypal-data-collector-4.0.3.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7216e9d25a16c563a987a17e0f55acf0/jetified-data-collector-2.18.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7216e9d25a16c563a987a17e0f55acf0/jetified-data-collector-2.18.1/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/75eae1942e14ee167cae4ea7f56db949/jetified-data-collector-2.18.1/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/75eae1942e14ee167cae4ea7f56db949/jetified-data-collector-2.18.1/jars/libs/paypal-data-collector-4.0.3.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/75eae1942e14ee167cae4ea7f56db949/jetified-data-collector-2.18.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/75eae1942e14ee167cae4ea7f56db949/jetified-data-collector-2.18.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d667c398dc99ac852f98c4dd228e12d2/jetified-data-collector-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5aedb45cec4542ed9d4a6c09c06eb71/jetified-data-collector-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce3f8e7af70ce71e419c97b96b3103f6/jetified-data-collector-2.18.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ce129811f234473bdad15acc6fbe197/jetified-data-collector-2.18.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3d0d8d7e3faafc15111d9bf1fc4b2a4a/jetified-data-collector-2.18.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3d0d8d7e3faafc15111d9bf1fc4b2a4a/jetified-data-collector-2.18.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3d0d8d7e3faafc15111d9bf1fc4b2a4a/jetified-data-collector-2.18.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3d0d8d7e3faafc15111d9bf1fc4b2a4a/jetified-data-collector-2.18.1/jars/libs/paypal-data-collector-4.0.3.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.paypal.android.sdk/data-collector/2.18.1/dd92b9f58eed594f38a087167cf1a31fb76e1484/data-collector-2.18.1-javadoc.jar!/" />

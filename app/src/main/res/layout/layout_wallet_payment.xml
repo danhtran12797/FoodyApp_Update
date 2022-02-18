@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/dialog_pay_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,6 +39,17 @@
             android:tag="4"
             android:text="Ví Zalo Pay" />
 
+        <RadioButton
+            android:id="@+id/radio_vnpay"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@drawable/drawable_radio_vnpay"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+            android:tag="5"
+            android:text="Ví VNPAY" />
     </RadioGroup>
 
 </RelativeLayout>

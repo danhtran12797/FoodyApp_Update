@@ -1,8 +1,11 @@
 package com.danhtran12797.thd.foodyapp.fragment;
 
+import static com.zing.zalo.zalosdk.oauth.LoginVia.APP;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.danhtran12797.thd.foodyapp.R;
@@ -24,12 +28,12 @@ import com.danhtran12797.thd.foodyapp.activity.listener.ILoginZalo;
 import com.danhtran12797.thd.foodyapp.model.Product;
 import com.danhtran12797.thd.foodyapp.module.login.ILogin;
 import com.danhtran12797.thd.foodyapp.module.login.LoginManage;
+import com.danhtran12797.thd.foodyapp.ultil.RandomString;
 import com.danhtran12797.thd.foodyapp.ultil.Ultil;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,10 +43,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.zing.zalo.zalosdk.core.helper.Base64;
+import com.zing.zalo.zalosdk.oauth.OAuthCompleteListener;
+import com.zing.zalo.zalosdk.oauth.OauthResponse;
+import com.zing.zalo.zalosdk.oauth.ZaloOpenAPICallback;
+import com.zing.zalo.zalosdk.oauth.ZaloSDK;
+import com.zing.zalo.zalosdk.oauth.model.ErrorResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Arrays;
 
 public class LoginFragment extends Fragment {
@@ -53,6 +65,8 @@ public class LoginFragment extends Fragment {
     private GoogleSignInClient mGoogleSignInClient;
     private LoginManage loginManage;
 
+    private String code_verifier;
+
     View view;
     TextView txtForgotPass, txtHelp;
     EditText edtEmail;
@@ -62,9 +76,6 @@ public class LoginFragment extends Fragment {
     Button btnGoolge;
     Button btnFacebook;
     Button btnZalo;
-
-//    Product product = null;
-//    String login_to = "";
 
     ILoading mListener;
     ILoginZalo mLoginZaloListener;
@@ -91,15 +102,16 @@ public class LoginFragment extends Fragment {
 //            login_to = bundle.getString("login_to");
 //            Log.d("AAA", "LoginFragment: " + login_to);
 //        }
-        loginManage = new LoginManage(mLoginListener);
+        loginManage = new LoginManage(mLoginListener, mListener);
 
         callbackManager = CallbackManager.Factory.create();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,27 +131,24 @@ public class LoginFragment extends Fragment {
                         Log.d(TAG, "Login SUCCESS");
                         GraphRequest request = GraphRequest.newMeRequest(
                                 loginResult.getAccessToken(),
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject object, GraphResponse response) {
-                                        Log.d(TAG, response.getJSONObject().toString());
+                                (object, response) -> {
+                                    Log.d(TAG, response.getJSONObject().toString());
 
-                                        // Application code
-                                        try {
-                                            String id = object.getString("id");
-                                            String name = object.getString("name");
+                                    // Application code
+                                    try {
+                                        String id = object.getString("id");
+                                        String name = object.getString("name");
 //                                            String short_name = object.getString("short_name");
 
-                                            String url_facebook = "https://graph.facebook.com/" + id + "/picture?type=large";
+                                        String url_facebook = "https://graph.facebook.com/" + id + "/picture?type=large";
 
 //                                            checkUser(id, name, url_facebook);
-                                            mListener.start_loading();
-                                            loginManage.loginWithSocial(id, name, url_facebook);
+                                        mListener.start_loading();
+                                        loginManage.loginWithSocial(id, name, url_facebook);
 
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                            Log.d(TAG, "onCompleted: " + e.getMessage());
-                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Log.d(TAG, "onCompleted: " + e.getMessage());
                                     }
                                 });
                         Bundle parameters = new Bundle();
@@ -169,69 +178,123 @@ public class LoginFragment extends Fragment {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void eventView() {
-        txtHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Help !!!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Ultil.isNetworkConnected(getContext())) {
-                    String email = edtEmail.getText().toString().trim();
-                    String password = edtPass.getText().toString().trim();
+        txtHelp.setOnClickListener(v -> Toast.makeText(getContext(), "Help !!!", Toast.LENGTH_SHORT).show());
+        btnLogin.setOnClickListener(view -> {
+            if (Ultil.isNetworkConnected(requireContext())) {
+                String email = edtEmail.getText().toString().trim();
+                String password = edtPass.getText().toString().trim();
 
-                    if (validateForm(email, password)) {
+                if (validateForm(email, password)) {
 //                        GetToken(email, password);
-                        loginManage.loginWithUserName(email, password);
-                    }
-                } else {
-                    Snackbar.make(view, "Vui lòng kiểm tra Internet", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    loginManage.loginWithUserName(email, password);
                 }
+            } else {
+                Snackbar.make(view, "Vui lòng kiểm tra Internet", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-        btnGoolge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Ultil.isNetworkConnected(getContext())) {
-                    Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                    startActivityForResult(signInIntent, RC_SIGN_IN);
-                } else {
-                    Ultil.show_snackbar(view, view);
-                }
+        btnGoolge.setOnClickListener(view -> {
+            if (Ultil.isNetworkConnected(requireContext())) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            } else {
+                Ultil.show_snackbar(view, view);
             }
         });
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Ultil.isNetworkConnected(getContext())) {
-                    LoginManager.getInstance().logInWithReadPermissions(LoginFragment.this, Arrays.asList("public_profile", "email"));
-                } else {
-                    Ultil.show_snackbar(view, view);
-                }
+        btnFacebook.setOnClickListener(view -> {
+            if (Ultil.isNetworkConnected(requireContext())) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginFragment.this, Arrays.asList("public_profile", "email"));
+            } else {
+                Ultil.show_snackbar(view, view);
             }
         });
-        btnZalo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Ultil.isNetworkConnected(getContext())) {
-                    mLoginZaloListener.login();
-                } else {
-                    Ultil.show_snackbar(view, view);
+        btnZalo.setOnClickListener(v -> {
+            if (Ultil.isNetworkConnected(requireActivity())) {
+//                    mLoginZaloListener.login();
+//                ZaloSDK.Instance.authenticate(requireActivity(), listenerZalo);
+                try {
+                    code_verifier = new RandomString().nextString();
+                    /*MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                    byte[] hash = digest.digest(code_verifier.getBytes(StandardCharsets.UTF_8));*/
+                    String code_challenge = genCodeChallenge(code_verifier);
+                    ZaloSDK.Instance.authenticateZaloWithAuthenType(requireActivity(), APP, code_challenge,
+                            listenerZalo);
+                } catch (Exception e) {
+                    Log.d("III", "eventView: " + e.getMessage());
                 }
+
+            } else {
+                Ultil.show_snackbar(view, view);
             }
         });
-        txtForgotPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ForgotPassActivity.class));
-                getActivity().finish();
-            }
+        txtForgotPass.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ForgotPassActivity.class));
+            requireActivity().finish();
         });
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String genCodeChallenge(String codeVerifier) {
+        String result = null;
+        try {
+            byte[] bytes = codeVerifier.getBytes(StandardCharsets.US_ASCII);
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(bytes, 0, bytes.length);
+            byte[] digest = md.digest();
+            result = java.util.Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
+        } catch (Exception ex) {
+            Log.d(TAG, "genCodeChallenge: "+ex.getMessage());
+        }
+        return result;
+    }
+
+    OAuthCompleteListener listenerZalo = new OAuthCompleteListener() {
+        @Override
+        public void onAuthenError(ErrorResponse errorResponse) {
+            //Đăng nhập thất bại..
+            Log.d(TAG, "onAuthenError: " + errorResponse.getErrorMsg());
+        }
+
+        @Override
+        public void onGetOAuthComplete(OauthResponse response) {
+            String code = response.getOauthCode();
+            //Đăng nhập thành công..
+            Log.d(TAG, "onGetOAuthComplete: ZALO LOGIN SUCCESS");
+
+            ZaloSDK.Instance.getAccessTokenByOAuthCode(
+                    requireContext(), code, code_verifier, new ZaloOpenAPICallback() {
+                        @Override
+                        public void onResult(JSONObject data) {
+                            int err = data.optInt("error");
+                            if (err == 0) {
+                                //clearOauthCodeInfo(); //clear used oacode
+
+                                String access_token = data.optString("access_token");
+                                /*refresh_token = data.optString("refresh_token");
+                                long expires_in = Long.parseLong(data.optString("expires_in"));*/
+                                ZaloSDK.Instance.getProfile(requireContext(), access_token, new ZaloOpenAPICallback() {
+                                    @Override
+                                    public void onResult(JSONObject jsonObject) {
+                                        Log.d(TAG, "onResult: " + jsonObject.toString());
+//                try {
+//                    String id = jsonObject.getString("id");
+//                    String name = jsonObject.getString("name");
+//                    String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+//                    mLoginListener.register(id, name, url);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+                                    }
+                                }, new String[]{"id", "name", "picture"});
+                            }
+                        }
+                    });
+
+        }
+
+    };
 
 //    private void checkUser(String id_user, String name, String url) {
 //        mListener.start_loading();
@@ -422,12 +485,14 @@ public class LoginFragment extends Fragment {
             handleSignInResult(task);
         } else if (requestCode == 64206) {
             callbackManager.onActivityResult(requestCode, resultCode, data);
+        } else if (requestCode == 64725) {
+            ZaloSDK.Instance.onActivityResult(requireActivity(), requestCode, resultCode, data);
         }
     }
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof ILoginZalo || context instanceof ILoading || context instanceof ILogin) {
             mListener = (ILoading) context;

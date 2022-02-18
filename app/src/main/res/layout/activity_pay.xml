@@ -266,7 +266,7 @@
                             android:paddingTop="12dp"
                             android:paddingBottom="12dp"
                             android:tag="0"
-                            android:text="Ví MoMo, Ví Zalo Pay" />
+                            android:text="Ví MoMo, Ví ZaloPay, Ví VNPAY" />
 
                         <TextView
                             android:layout_width="match_parent"

@@ -1,17 +1,15 @@
 package com.danhtran12797.thd.foodyapp.activity;
 
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.arrShoping;
+import static com.danhtran12797.thd.foodyapp.ultil.Ultil.user;
+
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -36,7 +33,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.danhtran12797.thd.foodyapp.R;
 import com.danhtran12797.thd.foodyapp.activity.listener.ILoading;
-import com.danhtran12797.thd.foodyapp.activity.listener.ILoginZalo;
 import com.danhtran12797.thd.foodyapp.adapter.MainFragmentAdapter;
 import com.danhtran12797.thd.foodyapp.fragment.ConnectionFragment;
 import com.danhtran12797.thd.foodyapp.fragment.DealFragment;
@@ -47,30 +43,17 @@ import com.danhtran12797.thd.foodyapp.service.APIService;
 import com.danhtran12797.thd.foodyapp.service.DataService;
 import com.danhtran12797.thd.foodyapp.ultil.Ultil;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 import com.victor.loading.rotate.RotateLoading;
-import com.zing.zalo.zalosdk.oauth.OAuthCompleteListener;
-import com.zing.zalo.zalosdk.oauth.OauthResponse;
-import com.zing.zalo.zalosdk.oauth.ZaloOpenAPICallback;
-import com.zing.zalo.zalosdk.oauth.ZaloSDK;
-
-import org.json.JSONObject;
-
-import java.security.MessageDigest;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.arrShoping;
-import static com.danhtran12797.thd.foodyapp.ultil.Ultil.user;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, ILoading{
 
@@ -448,25 +431,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void getToken() {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                    public void onComplete(@NonNull Task<String> task) {
                         if (!task.isSuccessful()) {
                             Log.d(TAG, "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
-                        String token = task.getResult().getToken();
+                        String token = task.getResult();
                         checkToken(token);
                         Log.d(TAG, "Token: " + token);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "onFailure: " + e.getMessage());
                     }
                 });
     }
