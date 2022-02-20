@@ -103,6 +103,9 @@ public class PaymentFailedActivity extends AppCompatActivity implements View.OnC
         } else if (type.equals("4")) {
             txt_delivery.setText("Ví ZaloPay");
             img_logo.setImageResource(R.drawable.zalo_pay);
+        }else {
+            txt_delivery.setText("Ví VNPAY");
+            img_logo.setImageResource(R.drawable.vn_pay);
         }
     }
 

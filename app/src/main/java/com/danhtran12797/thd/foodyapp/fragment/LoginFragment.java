@@ -212,19 +212,7 @@ public class LoginFragment extends Fragment {
         });
         btnZalo.setOnClickListener(v -> {
             if (Ultil.isNetworkConnected(requireActivity())) {
-//                    mLoginZaloListener.login();
-//                ZaloSDK.Instance.authenticate(requireActivity(), listenerZalo);
-                try {
-                    code_verifier = new RandomString().nextString();
-                    /*MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                    byte[] hash = digest.digest(code_verifier.getBytes(StandardCharsets.UTF_8));*/
-                    String code_challenge = genCodeChallenge(code_verifier);
-                    ZaloSDK.Instance.authenticateZaloWithAuthenType(requireActivity(), APP, code_challenge,
-                            listenerZalo);
-                } catch (Exception e) {
-                    Log.d("III", "eventView: " + e.getMessage());
-                }
-
+                mLoginZaloListener.login();
             } else {
                 Ultil.show_snackbar(view, view);
             }
@@ -249,52 +237,6 @@ public class LoginFragment extends Fragment {
         }
         return result;
     }
-
-    OAuthCompleteListener listenerZalo = new OAuthCompleteListener() {
-        @Override
-        public void onAuthenError(ErrorResponse errorResponse) {
-            //Đăng nhập thất bại..
-            Log.d(TAG, "onAuthenError: " + errorResponse.getErrorMsg());
-        }
-
-        @Override
-        public void onGetOAuthComplete(OauthResponse response) {
-            String code = response.getOauthCode();
-            //Đăng nhập thành công..
-            Log.d(TAG, "onGetOAuthComplete: ZALO LOGIN SUCCESS");
-
-            ZaloSDK.Instance.getAccessTokenByOAuthCode(
-                    requireContext(), code, code_verifier, new ZaloOpenAPICallback() {
-                        @Override
-                        public void onResult(JSONObject data) {
-                            int err = data.optInt("error");
-                            if (err == 0) {
-                                //clearOauthCodeInfo(); //clear used oacode
-
-                                String access_token = data.optString("access_token");
-                                /*refresh_token = data.optString("refresh_token");
-                                long expires_in = Long.parseLong(data.optString("expires_in"));*/
-                                ZaloSDK.Instance.getProfile(requireContext(), access_token, new ZaloOpenAPICallback() {
-                                    @Override
-                                    public void onResult(JSONObject jsonObject) {
-                                        Log.d(TAG, "onResult: " + jsonObject.toString());
-//                try {
-//                    String id = jsonObject.getString("id");
-//                    String name = jsonObject.getString("name");
-//                    String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
-//                    mLoginListener.register(id, name, url);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-                                    }
-                                }, new String[]{"id", "name", "picture"});
-                            }
-                        }
-                    });
-
-        }
-
-    };
 
 //    private void checkUser(String id_user, String name, String url) {
 //        mListener.start_loading();
@@ -485,8 +427,6 @@ public class LoginFragment extends Fragment {
             handleSignInResult(task);
         } else if (requestCode == 64206) {
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        } else if (requestCode == 64725) {
-            ZaloSDK.Instance.onActivityResult(requireActivity(), requestCode, resultCode, data);
         }
     }
 

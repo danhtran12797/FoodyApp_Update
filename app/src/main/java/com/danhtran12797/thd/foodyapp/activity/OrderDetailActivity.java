@@ -1,7 +1,9 @@
 package com.danhtran12797.thd.foodyapp.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,8 @@ import com.danhtran12797.thd.foodyapp.fragment.ConnectionFragment;
 import com.danhtran12797.thd.foodyapp.model.JWTToken;
 import com.danhtran12797.thd.foodyapp.model.Order;
 import com.danhtran12797.thd.foodyapp.model.OrderDetail;
+import com.danhtran12797.thd.foodyapp.module.payment.AsyncResponse;
+import com.danhtran12797.thd.foodyapp.module.payment.OnCallBackRefundListener;
 import com.danhtran12797.thd.foodyapp.module.payment.OnCancelOrderListener;
 import com.danhtran12797.thd.foodyapp.module.payment.OnUpdateOrderListener;
 import com.danhtran12797.thd.foodyapp.module.payment.PaymentManager;
@@ -32,8 +36,18 @@ import com.danhtran12797.thd.foodyapp.ultil.Ultil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.victor.loading.rotate.RotateLoading;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+import java.util.TimeZone;
 
 public class OrderDetailActivity extends AppCompatActivity implements OrderDetailAdapter.IOrderDetail, ILoading, View.OnClickListener {
 
@@ -250,7 +264,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     private void cancleOrder() {
         JWTToken jwtToken = Ultil.getTokenPreference(OrderDetailActivity.this);
-        new PaymentManager(OrderDetailActivity.this, OrderDetailActivity.this, jwtToken.getToken(), new OnUpdateOrderListener() {
+       new PaymentManager(OrderDetailActivity.this, OrderDetailActivity.this, jwtToken.getToken(), new OnUpdateOrderListener() {
             @Override
             public void orderSuccess() {
                 Toast.makeText(OrderDetailActivity.this, "Hủy đơn hàng '" + txt_code.getText().toString() + "' thành công", Toast.LENGTH_SHORT).show();
@@ -267,7 +281,68 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
             public void cancelSuccess() {
                 cancleOrder();
             }
-        }).getPayment(order.getId());
+        }).getPayment(order.getId(), new OnCallBackRefundListener() {
+            @Override
+            public void callBackRefundVnPay() {
+                Log.d("PPP", "callBackRefundVnPay: ");
+               /* new RefundVnPayAsyncTask(new AsyncResponse() {
+                    @Override
+                    public void processFinish(List<String> output) {
+
+                    }
+                }).execute();*/
+            }
+        });
+    }
+
+    private static class RefundVnPayAsyncTask extends AsyncTask<String, Void, List<String>> {
+
+        private AsyncResponse listener;
+
+        public RefundVnPayAsyncTask(AsyncResponse listener){
+            this.listener=listener;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected List<String> doInBackground(String... paymentUrl) {
+            List<String> lstResponse= new ArrayList<>();
+            try{
+                URL url = new URL(paymentUrl[0]);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                String Rsp = response.toString();
+                String respDecode = URLDecoder.decode(Rsp, "UTF-8");
+                String[] responseData = respDecode.split("[&=]");
+                lstResponse= Arrays.asList(responseData);
+                /*com.google.gson.JsonObject job = new JsonObject();
+                job.addProperty("data", Arrays.toString(responseData));
+                Gson gson = new Gson();
+                json= gson.toJson(job);*/
+            }catch (Exception e){
+                Log.d("III", "doInBackground: ");
+            }
+
+            return lstResponse;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> s) {
+            super.onPostExecute(s);
+            listener.processFinish(s);
+        }
     }
 
     @Override

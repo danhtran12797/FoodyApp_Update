@@ -32,6 +32,7 @@ import com.danhtran12797.thd.foodyapp.model.JWTToken;
 import com.danhtran12797.thd.foodyapp.model.Order;
 import com.danhtran12797.thd.foodyapp.model.OrderDetail;
 import com.danhtran12797.thd.foodyapp.model.ShopingCart;
+import com.danhtran12797.thd.foodyapp.module.payment.AsyncResponse;
 import com.danhtran12797.thd.foodyapp.module.payment.OnInsertOrderListener;
 import com.danhtran12797.thd.foodyapp.module.payment.OnUpdateOrderListener;
 import com.danhtran12797.thd.foodyapp.module.payment.PaymentManager;
@@ -140,6 +141,12 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         setAdapter(order);
 
         setAmount(order);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d("III", "onNewIntent: ");
     }
 
     @Override
@@ -305,7 +312,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.btn_confirm:
                 if (Ultil.isNetworkConnected(this)) {
-                    String order_id = String.valueOf(System.currentTimeMillis());
+                    String order_id = Config.getRandomNumber(8);
                     boolean update = false;
                     request_user = txt_request.getText().toString();
                     if (order != null) {
@@ -344,11 +351,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public interface AsyncResponse {
-        void processFinish(String output);
-    }
-
-    private static class QueryAsyncTask extends AsyncTask<String, Void, String> {
+    private static class QueryAsyncTask extends AsyncTask<String, Void, List<String>> {
 
         private AsyncResponse listener;
 
@@ -362,8 +365,8 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         @Override
-        protected String doInBackground(String... paymentUrl) {
-            String json="";
+        protected List<String> doInBackground(String... paymentUrl) {
+            List<String> lstResponse= new ArrayList<>();
             try{
                 URL url = new URL(paymentUrl[0]);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -378,44 +381,25 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
                 in.close();
                 String Rsp = response.toString();
                 String respDecode = URLDecoder.decode(Rsp, "UTF-8");
-                String[] responseData = respDecode.split("&|\\=");
-                com.google.gson.JsonObject job = new JsonObject();
+                String[] responseData = respDecode.split("[&=]");
+                lstResponse=Arrays.asList(responseData);
+                /*com.google.gson.JsonObject job = new JsonObject();
                 job.addProperty("data", Arrays.toString(responseData));
                 Gson gson = new Gson();
-                json= gson.toJson(job);
+                json= gson.toJson(job);*/
             }catch (Exception e){
                 Log.d("III", "doInBackground: ");
             }
 
-            return json;
+            return lstResponse;
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(List<String> s) {
             super.onPostExecute(s);
             listener.processFinish(s);
         }
     }
-
-/*    private void queryVNPAY(String urlQuery) {
-        start_loading();
-        DataVnPayService dataService = APIVnPayService.getVnPayService(urlQuery);
-        Call<String> callback = dataService.GetQueryPAY(urlQuery);
-        callback.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String textResponse = response.body();
-                Log.d("III", "onResponse: ");
-                stop_loading(true);
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("III", "onFailure: " + t.getMessage());
-                stop_loading(false);
-            }
-        });
-    }*/
 
     public void openSdk(String url) {
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
@@ -440,8 +424,19 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
                     Ultil.setVnPayPreference(getApplicationContext(), paymentManager.getOrderId(), paymentManager.getCreateDate());
                     new QueryAsyncTask(new AsyncResponse() {
                         @Override
-                        public void processFinish(String output) {
-                            stop_loading(true);
+                        public void processFinish(List<String> output) {
+                            int idxResponseCode=output.indexOf("vnp_ResponseCode");
+                            int idxTrans=output.indexOf("vnp_TransactionNo");
+                            if(idxResponseCode!=-1&&idxTrans!=-1){
+                                String vnp_ResponseCode=output.get(idxResponseCode+1);
+                                String vnp_TransactionNo=output.get(idxTrans+1);
+                                if(vnp_ResponseCode.equals("00")){
+                                    paymentManager.insertUpdateDBVnPay(vnp_TransactionNo);
+                                }else
+                                    paymentManager.insert_order("5");
+                            }else{
+                                paymentManager.insert_order("5");
+                            }
                         }
                     }).execute(paymentManager.getRequestQueryVnPay());
                 } else {

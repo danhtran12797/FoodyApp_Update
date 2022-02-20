@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.danhtran12797.thd.foodyapp">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -26,6 +27,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".activity.ResultActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="resultactivity" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".activity.SendEmailSuccessActivity"
             android:screenOrientation="portrait" />

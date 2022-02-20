@@ -97,7 +97,14 @@ public class PaymentManager {
     OnUpdateOrderListener onUpdateOrderListener;
     OnCancelOrderListener onCancelOrderListener;
 
+    public PaymentManager(){
+        Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        createDate = formatter.format(cld.getTime());
+    }
+
     public PaymentManager(Activity activity, ILoading mLoading, String payment, OnCancelOrderListener onCancelOrderListener) {
+        this();
         this.mActivity = activity;
         this.mLoading = mLoading;
         this.payment = payment;
@@ -112,6 +119,7 @@ public class PaymentManager {
     }
 
     public PaymentManager(Activity activity, ILoading mLoading, String token_id_user, OnUpdateOrderListener listener) {
+        this();
         this.mActivity = activity;
         this.onUpdateOrderListener = listener;
         this.mLoading = mLoading;
@@ -120,6 +128,7 @@ public class PaymentManager {
 
     public PaymentManager(Activity mActivity, ILoading mLoading, OnInsertOrderListener mInserOrder, String request
             , double amount, String token_id_user, AddressShipping adress, String delivery, String payment, String order_id, boolean update) {
+        this();
         this.mActivity = mActivity;
         this.mLoading = mLoading;
         this.mInserOrder = mInserOrder;
@@ -151,7 +160,7 @@ public class PaymentManager {
     }
 
     private Observable<String> create_obserable_update_order(String order_id, String payment, String status, String request, String delivery, String phone, String address, String email, String name) {
-        return APIService.getService().Update_Order(token_id_user, order_id, status, payment, request, delivery, phone, address, email, name);
+        return APIService.getService().Update_Order(token_id_user, order_id, status, payment, request, delivery, phone, address, email, name, createDate);
     }
 
     public void Update_Order(String order_id, String payment, String status, String request, String delivery, String phone, String address, String email, String name) {
@@ -293,7 +302,6 @@ public class PaymentManager {
     }
 
     public String getUrlPaymentVNPAY(){
-        order_id=Config.getRandomNumber(8);
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other"; // billpayment, topup, fashion, other
@@ -348,9 +356,10 @@ public class PaymentManager {
 
         }
         String fullAddress = address.getAddress();
-        int idxCity = fullAddress.lastIndexOf(' ');
+        String splitAddress[] = address.getAddress().split(",");
+        int idxCity = fullAddress.lastIndexOf(',');
         vnp_Params.put("vnp_Bill_Address", fullAddress.substring(0, idxCity-1));
-        vnp_Params.put("vnp_Bill_City", fullAddress.substring(idxCity));
+        vnp_Params.put("vnp_Bill_City", splitAddress[3].trim());
         vnp_Params.put("vnp_Bill_Country", "VN");
 //        // Invoice
         vnp_Params.put("vnp_Inv_Phone", "84362258040");
@@ -452,10 +461,20 @@ public class PaymentManager {
         String queryUrl = query.toString();
         String vnp_SecureHash = Config.hmacSHA512(Config.vnp_HashSecret, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
-        String paymentUrl = Config.vnp_apiUrl + "?" + queryUrl;
+//        String paymentUrl = Config.vnp_apiUrl + "?" + queryUrl;
 //        vnp_Params.put("vnp_SecureHash", vnp_SecureHash);
 
-        return paymentUrl;
+        return Config.vnp_apiUrl + "?" + queryUrl;
+    }
+
+    public void insertUpdateDBVnPay(String trans_id){
+        Observable<String> observableA = create_obserable_order(token_id_user, request, "1", order_id);
+        if (update) {
+            observableA = create_obserable_update_order(order_id, payment, "1", request, delivery, address.getPhone(), address.getAddress(), Ultil.user.getEmail(), address.getName());
+        }
+        insert_order_payment(observableA
+                , create_obserable_payment(token_id_user, order_id, trans_id
+                        , String.valueOf(amount), "VNPAY", ""));
     }
 
     private String jsonStringTransRefund(Payment payment) {
@@ -516,7 +535,7 @@ public class PaymentManager {
         });
     }
 
-    public void getPayment(String order_id) {
+    public void getPayment(String order_id, OnCallBackRefundListener listener) {
         mLoading.start_loading();
         DataService dataService = APIService.getService();
         Call<Payment> callback = dataService.GetPayment(order_id);
@@ -531,6 +550,8 @@ public class PaymentManager {
                     cancleOrderMoMo(paymentCard);
                 } else if (payment.equals("4")) {
                     cancleOrderZaloPay(paymentCard);
+                }else if(payment.equals("5")){
+                    listener.callBackRefundVnPay();
                 }
             }
 
@@ -603,7 +624,7 @@ public class PaymentManager {
     }
 
     private Observable<String> create_obserable_payment(String token, String order_id, String trans_id, String amount, String type, String number) {
-        return APIService.getService().Payment(token, trans_id, order_id, amount, type, number);
+        return APIService.getService().Payment(token, trans_id, order_id, amount, type, number, createDate);
     }
 
     private Observable<String> create_obserable_order_detail(String json_array) {
@@ -613,7 +634,7 @@ public class PaymentManager {
     private Observable<String> create_obserable_order(String token, String request, String status, String id_order) {
         return APIService.getService().Orders(token, address.getName(), address.getPhone(),
                 address.getAddress(), request, Ultil.user.getEmail(),
-                delivery, payment, status, id_order).flatMap(s -> {
+                delivery, payment, status, id_order, createDate).flatMap(s -> {
             return create_obserable_order_detail(json_array_order_detail(s));
         });
     }

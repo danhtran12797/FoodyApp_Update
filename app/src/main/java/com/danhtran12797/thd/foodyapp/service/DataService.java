@@ -168,7 +168,9 @@ public interface DataService {
             , @Field("order_id") String order_id
             , @Field("amount") String amount
             , @Field("type") String type
-            , @Field("number") String number);
+            , @Field("number") String number
+            , @Field("create_date") String create_date
+    );
 
     @FormUrlEncoded
     @POST("Orders.php")
@@ -181,7 +183,9 @@ public interface DataService {
             , @Field("delivery") String delivery
             , @Field("payment") String payment
             , @Field("status") String status
-            , @Field("id_order") String id_order);
+            , @Field("id_order") String id_order
+            , @Field("create_date") String create_date
+    );
 
     @FormUrlEncoded
     @POST("OrdersDetail.php")
@@ -196,7 +200,7 @@ public interface DataService {
     Observable<String> Update_Order(@Header("Authorization") String authorization, @Field("id_order") String id_order
             , @Field("status") String status, @Field("payment") String payment, @Field("request") String request
             , @Field("delivery") String delivery, @Field("phone") String phone, @Field("address") String address
-            , @Field("email") String email, @Field("name") String name);
+            , @Field("email") String email, @Field("name") String name, @Field("update_date") String update_date);
 
     @GET("CheckRequestTimeOut.php")
     Call<String> CheckRequestTimeOut(@Header("Authorization") String authorization);
